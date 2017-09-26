@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define N 10
-void find_two_largest(const int *a, int n, int *largest, int *second_largest);
+void find_two_largest(/*const */int *a, int n, int *largest, int *second_largest);
 
 int main(void)
 {
@@ -14,32 +14,32 @@ int main(void)
 	return 0;
 }
 
-void find_two_largest(const int *a, int n, int *largest, int *second_largest)
+void find_two_largest(/*const */int *a, int n, int *largest, int *second_largest)
 {
 	int *p=a;
 
 	if (*a>*(a+1))
 	{
-		largest=a;
-		second_largest=(a+1);
+		*largest=*p;
+		*second_largest=*(p+1);
 	}
 
 	else
 	{
-		largest=(a+1);
-		second_largest=a;
+		*largest=*(p+1);
+		*second_largest=*p;
 	}
 		
 	for (; p<a+n; p++)
 	{
 		if (*p>*largest)
 		{
-			second_largest=largest;
-			largest=p;
+			*second_largest=*largest;
+			*largest=*p;
 		}
 		
 		else if (*p>*second_largest)
-			second_largest=p;
+			*second_largest=*p;
 	}
 }
 
