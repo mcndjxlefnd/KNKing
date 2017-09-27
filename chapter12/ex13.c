@@ -1,42 +1,34 @@
-/* Initializes an identity matrix in an array of size N-square */
-
 #include <stdio.h>
 
-#define N 5
-
-void id_matrix(int *a, int n);
+#define N 2
 
 int main(void)
 {
-	int id[N], *p, q=0;
-
-	id_matrix(id, N);
-
-	for (p=id; p<id+(N*N); p++)
+	double ident[N][N], *p;
+	int num_zeros=N;
+	
+	for (p=&ident[0][0]; p<=&ident[N-1][N-1]; p++)
 	{
-		printf("%d ", *p);
-		if (q++%N==0)
-			putchar('\n');
+		if (num_zeros==N)
+		{
+			*p=1.0;
+			num_zeros=0;
+		}
+		else
+		{
+			*p=0.0;
+			num_zeros++;
+		}
+	}
+
+	for (int row=0; row<N; row++)
+	{
+		for (int col=0; col<N; col++)
+			printf("%g ", ident[row][col]);
+		putchar('\n');
 	}
 
 	return 0;
 }
+		
 
-void id_matrix(int *a, int n)
-{
-	int *p, q;
-
-	for (p=a; p<a+(n*n); p++)
-	{
-		if (p==a)
-			*p=1;
-
-		if (q++<n)
-			*p=0;
-		else
-		{
-			*p=1;
-			q=0;
-		}
-	}
-}
