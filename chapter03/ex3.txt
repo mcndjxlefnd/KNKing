@@ -1,0 +1,17 @@
+For each of the following pairs of scanf format strings, indicate whether or not the two strings are
+equivalent. If they're not, show how they can be distinguished.
+
+a) "%d"		vs " %d"
+	Equivalent - whitespace character in second format string can find 0 whitespace characters and
+behave as expected.
+
+b) "%d-%d-%d"	vs "%d -%d -%d"
+	Not equivalent - if input string contains spaces before the dashes scanf will terminate.
+
+c) "%f"		vs "%f "
+	Not equivalent - the whitespace character after the conversion specifier in the second format
+string will cause scanf to look for a non-whitespace character and hang until the user enters one.
+
+d) "%f,%f"	vs "%f, %f"
+	Equivalent - the whitespace in the second format string can find 0 whitespace characters in the
+input string.
