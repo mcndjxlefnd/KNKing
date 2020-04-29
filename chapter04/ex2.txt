@@ -1,0 +1,7 @@
+If i and j are positive integers, does (-i)/j always have the same value as -(i/j)? Justify your
+answer.
+
+	(-i)/j does not always have the same value as -(i/j). The behavior of / with negative operands
+depends on which implementation of C. C89 will round the result either up, or down, potentially
+differently each time, but the result will be signed correctly. In C99 the result will also be
+signed correctly, but any decimal answer will be rounded closer to 0 instead of either up or down.
